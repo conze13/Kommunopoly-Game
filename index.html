@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kommunopoly – spielbar</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;800&display=swap">
+<style>
+:root{--bg:#EDEBE6;--fg:#26282A;--pn:#F8F7F4;--mu:#5B5D60;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1B1C1E;--fg:#ECEAE4;--pn:#26282A;--mu:#A9AAAC}}
+:root[data-theme="dark"]{--bg:#1B1C1E;--fg:#ECEAE4;--pn:#26282A;--mu:#A9AAAC}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:Archivo,Helvetica,Arial,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:16px}
+h1{margin:0;font-size:clamp(28px,6vw,44px);text-transform:uppercase;line-height:1}
+.sub{margin:6px 0 16px;color:var(--mu);font-size:14px}
+.wrap{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start}
+.bd{container-type:inline-size;flex:1 1 340px;max-width:560px;aspect-ratio:1;display:grid;grid-template:repeat(5,1fr)/repeat(5,1fr);background:#F2F0EB;color:#26282A;outline:2px solid #26282A}
+.t{box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;padding:.9cqw;font-size:1.6cqw;font-weight:800;text-transform:uppercase;line-height:1.05;box-shadow:inset 0 0 0 .25cqw #26282A;overflow:hidden;min-width:0}
+.top{border-bottom:3cqw solid var(--c)}.rgt{border-left:3cqw solid var(--c)}.bot{border-top:3cqw solid var(--c)}.lft{border-right:3cqw solid var(--c)}
+.k{background:#26282A;color:#F2F0EB;font-size:1.5cqw}
+.k small{font-weight:500;letter-spacing:.1em;color:#B5B6B8;font-size:1.3cqw}
+.tk{display:flex;flex-wrap:wrap;gap:.5cqw;align-items:center}
+.pw{width:3.4cqw;height:3.4cqw;border-radius:50%;background:#A3463D;color:#fff;font-size:1.9cqw;display:inline-flex;align-items:center;justify-content:center}
+.pw.k0{background:#26282A;box-shadow:0 0 0 .3cqw #F2F0EB}.k .pw.k0{background:#F2F0EB;color:#26282A}
+.pw.on{box-shadow:0 0 0 .6cqw #E0A82E}
+.hs{width:4.4cqw;fill:#26282A}.hs.oc{fill:#A3463D}.rg{fill:none;stroke:#26282A;stroke-width:1.7}
+.ct{grid-area:2/2/5/5;background:#DCDAD5;box-shadow:inset 0 0 0 .25cqw #26282A;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.5cqw;text-align:center;padding:3cqw}
+.ct b{font-size:6.6cqw;text-transform:uppercase;line-height:1}
+.dk{width:13cqw;height:8.5cqw;background:#A3463D;border:.6cqw solid #26282A}
+.cc{background:#F2F0EB;border:.5cqw solid #26282A;padding:2cqw;font-size:2cqw;line-height:1.3;max-width:34cqw;text-align:left}
+.cc i{font-style:normal;font-weight:800;font-size:1.5cqw;letter-spacing:.1em;text-transform:uppercase;color:#A3463D}
+.pnl{flex:1 1 300px;background:var(--pn);padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 0 0 1.5px var(--fg)}
+.ch{display:flex;gap:4px}.ch span{flex:1;text-align:center;padding:5px 0;font-weight:800;font-size:13px;background:#A3463D;color:#fff;opacity:.35}
+.ch span.a{opacity:1}.ch span.c0{background:#26282A;color:#F2F0EB}
+.pnl h2{margin:0;font-size:20px;text-transform:uppercase}
+.st{font-size:13px;color:var(--mu)}
+.rw{display:flex;gap:12px;align-items:center}
+#die{width:56px;height:56px;border:3px solid var(--fg);display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800;flex:none}
+button{flex:1;min-height:56px;font:800 15px Archivo,Helvetica,Arial,sans-serif;text-transform:uppercase;background:#26282A;color:#F2F0EB;border:0;cursor:pointer;padding:0 14px}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) button{background:#ECEAE4;color:#1B1C1E}}
+.rule{border:1.5px solid var(--fg);padding:8px 10px;font-weight:800;font-size:13px;text-transform:uppercase;text-align:center}
+.lg{font-size:13px;line-height:1.45;margin:0;padding:0;list-style:none;min-height:110px}.lg li{margin-bottom:3px}.lg li:first-child{font-weight:800}
+.lh{font-size:12px;color:var(--mu);line-height:1.5}
+.opts{display:flex;flex-wrap:wrap;gap:6px}.opts button{flex:1 1 45%;min-height:44px;font-size:13px}
+.im{font-size:2.6cqw;color:#A3463D}
+.lkd{background:repeating-linear-gradient(135deg,#F2F0EB 0 .9cqw,#D6D3CC .9cqw 1.3cqw)}
+</style>
+</head>
+<body>
+<main>
+<h1>Kommunopoly</h1>
+<p class="sub">Spielbar zu viert an einem Gerät: 1 Kapitalist gegen 3 Kommunisten. Reihum klicken.</p>
+<div class="wrap"><div class="bd" id="bd"></div><div class="pnl" id="pn"></div></div>
+</main>
+<script>
+const $=s=>document.getElementById(s),seq=[0,1,0,2,0,3],PN=['Kapitalist','Kommunist 1','Kommunist 2','Kommunist 3'],RL=12;
+const NM=['Hafen&shy;straße','Rote Flora','Gänge&shy;viertel','Liebig&shy;straße','Rigaer Straße','Kottbusser Tor','Eppsteiner Straße','Kettenhofweg','Bockenheimer Landstraße','Luxem&shy;burger Straße','Stoll&shy;werck','Vogel&shy;sanger Straße'];
+const POS=[[1,1],[1,2],[1,3],[1,4],[1,5],[2,5],[3,5],[4,5],[5,5],[5,4],[5,3],[5,2],[5,1],[4,1],[3,1],[2,1]];
+const COL=['#8E9091','#A3463D','#BDAE92','#6F7A63'],SD=['top','rgt','bot','lft'];
+const d6=()=>1+Math.floor(Math.random()*6),rnd=a=>a[Math.floor(Math.random()*a.length)];
+const nm=i=>i%4?NM[i-1-(i>>2)].replace(/&shy;/g,''):'ein Ereignisfeld';
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const hc=()=>S.c.filter(x=>x.h).length,oc=()=>S.c.filter(x=>x.o).length,cur=()=>seq[S.t%6];
+const mv=(j,d)=>{S.p[j]=(S.p[j]+d+16)%16};
+const coms=()=>[1,2,3];
+function build(i){const c=S.c[i];c.h=1;if(S.first){c.s=1;S.first=0}}
+const hl=f=>[...Array(16).keys()].filter(i=>i%4&&S.c[i].h&&f(S.c[i])).map(i=>[nm(i),i]);
+const cp=()=>coms().map(j=>[PN[j],j]);
+function ask(q,o,cb){if(!o.length){log('Keine Auswahl möglich.');return}S.ch={q,o,cb};S.ph='ch'}
+function pick(k){const c=S.ch;S.ch=null;S.ph='end';c.cb(c.o[k][1]);render()}
+const T=(s,n,x,f)=>({s,n,x,f});
+const CARDS=[
+T('C','Solidaritäts-Demo','Alle drei Kommunisten dürfen sofort 1 oder 2 Felder vorziehen.',()=>{let j=1;const st=()=>{if(j>3)return;const k=j++;ask(PN[k]+': 1 oder 2 Felder vor?',[['1 Feld',1],['2 Felder',2]],v=>{mv(k,v);log(PN[k]+' zieht '+v+' vor.');st()})};st();return''}),
+T('C','Autonome Direktbesetzung','Wähle ein ungeschütztes Haus. Es wird sofort ohne Wurf besetzt.',()=>{ask('Welches ungeschützte Haus wird besetzt?',hl(c=>!c.s&&!c.o&&!c.lk),i=>{S.c[i].o=1;log(nm(i)+' besetzt.')});return''}),
+T('C','Mieterstreik & Blockade','Der Kapitalist verliert seine nächsten zwei Züge komplett.',()=>{S.sk[0]=2;return'Kapitalist setzt 2 Züge aus.'}),
+T('C','Rechtsberatung vom Mieterverein','Bis zu zwei Sicherheitschips deiner Wahl werden entfernt.',()=>{let n=0;const st=()=>{const o=hl(c=>c.s);if(n>=2||!o.length)return;ask('Sicherheitschip entfernen ('+(n+1)+'/2)?',[...o,['Fertig',-1]],i=>{if(i<0)return;S.c[i].s=0;n++;log('Sicherheitschip bei '+nm(i)+' entfernt.');st()})};st();return''}),
+T('C','Kiez-Netzwerk','Teleportiere dich zu einem Kommunisten. Das löst eine Sofort-Besetzung aus.',()=>{const g=m=>ask(PN[m]+' teleportiert sich zu …',coms().filter(j=>j!=m).map(j=>[PN[j]+' ('+nm(S.p[j])+')',j]),j=>{S.p[m]=S.p[j];const i=S.p[m],c=S.c[i];log(PN[m]+' steht jetzt bei '+nm(i)+'.');if(i%4&&c.h&&!c.s&&!c.o&&!c.lk){c.o=1;log('Sofort-Besetzung!')}});cur()?g(cur()):ask('Welcher Kommunist nutzt das Netzwerk?',cp(),g);return''}),
+T('C','Polizeilicher Rückzug','Ein besetztes Haus deiner Wahl ist für den Rest des Spiels immun gegen Räumung.',()=>{ask('Welches besetzte Haus wird immun?',hl(c=>c.o&&!c.im),i=>{S.c[i].im=1;log(nm(i)+' ist jetzt immun.')});return''}),
+T('C','Sabotage der Baupläne','Ein ungeschütztes Haus des Kapitalisten wird abgerissen.',()=>{ask('Welches Haus wird abgerissen?',hl(c=>!c.s&&!c.o),i=>{Object.assign(S.c[i],{h:0,lk:0});log(nm(i)+' abgerissen.')});return''}),
+T('C','Rote Welle','Würfle: Bei 3–6 darfst du ein angrenzendes Haus besetzen.',()=>{const r=d6();S.r=r;if(r<3)return'Würfel '+r+': nichts passiert.';const a=hl(c=>!c.s&&!c.o&&!c.lk).filter(([n,i])=>[i-1,i+1].some(k=>k>0&&k<16&&k%4&&S.c[k].o));ask('Würfel '+r+': Welches angrenzende Haus wird besetzt?',a,i=>{S.c[i].o=1;log(nm(i)+' besetzt.')});return'Würfel '+r}),
+T('C','Genossenschafts-Fonds','Ein Kommunist deiner Wahl erhält im nächsten Zug das doppelte Bewegungsergebnis.',()=>{ask('Wer würfelt doppelt?',cp(),j=>{S.dbl[j]=1;log(PN[j]+' zieht im nächsten Zug doppelt.')});return''}),
+T('K','Sanierungskredit','Du darfst sofort einen Sicherheitschip auf ein ungeschütztes Haus legen.',()=>{ask('Welches Haus erhält einen Sicherheitschip?',hl(c=>!c.s&&!c.o&&!c.lk),i=>{S.c[i].s=1;log('Sicherheitschip bei '+nm(i)+'.')});return''}),
+T('K','Private Sicherheitsfirma','Ein besetztes Haus deiner Wahl wird sofort geräumt.',()=>{ask('Welches Haus wird geräumt?',hl(c=>c.o&&!c.im),i=>{S.c[i].o=0;log(nm(i)+' geräumt.')});return''}),
+T('K','Bürokratische Hürde','Ein Kommunist deiner Wahl muss seinen nächsten Zug aussetzen.',()=>{ask('Wer setzt aus?',cp(),j=>{S.sk[j]=Math.max(S.sk[j],1);log(PN[j]+' setzt aus.')});return''}),
+T('K','Polizeigewalt','Schütze ein ungeschütztes Haus sofort mit einem Sicherheitschip.',()=>{ask('Welches Haus wird geschützt?',hl(c=>!c.s&&!c.o&&!c.lk),i=>{S.c[i].s=1;log('Sicherheitschip bei '+nm(i)+'.')});return''}),
+T('K','Kurzfristige Räumung','Landest du im nächsten Zug auf einem besetzten Feld, gelingt die Räumung automatisch.',()=>{if(cur())S.arA=1;else S.arP=1;return'Nächste Räumung gelingt automatisch.'}),
+T('N','Instandhaltungsstau','Ein zufälliges Haus ist 2 Runden gesperrt (weder schütz- noch besetzbar).',()=>{const o=hl(c=>!c.lk);if(!o.length)return'Kein Haus vorhanden.';const i=rnd(o)[1];S.c[i].lk=12;return nm(i)+' gesperrt.'}),
+T('N','Großdemo im Viertel','Alle Spieler ziehen sofort 1 Feld zurück.',()=>{[0,1,2,3].forEach(j=>mv(j,-1));return'Alle 1 Feld zurück.'}),
+T('N','Urabstimmung','Würfle: Bei 3–6 wird ein zufälliges Haus besetzt.',()=>{const r=d6();S.r=r;if(r<3)return'Würfel '+r+': nichts passiert.';const o=hl(c=>!c.o&&!c.lk);if(!o.length)return'Würfel '+r+': kein Haus frei.';const i=rnd(o)[1];S.c[i].o=1;S.c[i].s=0;return'Würfel '+r+': '+nm(i)+' besetzt.'}),
+T('N','Verkehrschaos','Alle Spieler ziehen im nächsten Zug exakt 1 Feld, statt zu würfeln.',()=>{S.ex=[1,1,1,1];return'Alle ziehen nächstes Mal exakt 1 Feld.'}),
+T('N','Stadtteilfest','Alle Spieler erhalten im nächsten Zug +1 Feld Bonus.',()=>{S.bn=[1,1,1,1];return'Alle +1 Feld im nächsten Zug.'}),
+T('N','Vollsperrung','Ein zufälliges Straßenfeld ist eine Runde komplett gesperrt.',()=>{const i=rnd([...Array(16).keys()].filter(i=>i%4));S.c[i].lk=6;return nm(i)+' gesperrt.'})];
+const TAG={K:'Kapitalist',C:'Kollektiv',N:'Neutral'};
+let S;
+function init(){S={p:[0,0,0,0],t:0,c:Array.from({length:16},()=>({h:0,s:0,o:0,im:0,lk:0})),dk:shuf(CARDS.map((_,i)=>i)),ds:[],sk:[0,0,0,0],dbl:[0,0,0,0],ex:[0,0,0,0],bn:[0,0,0,0],arA:0,arP:0,ch:null,ph:'move',ctx:null,r:null,first:1,lg:['Neues Spiel. Der Kapitalist beginnt.'],card:null,over:0};render()}
+function log(m){S.lg.unshift(m)}
+function next(){if(cur()==0){S.arA=0;if(S.arP){S.arA=1;S.arP=0}}
+S.c.forEach(c=>{if(c.lk>0)c.lk--});S.t++;S.ph='move';S.ctx=null;
+if(S.t>=RL*6){S.over=1;return}
+if(S.sk[cur()]>0){S.sk[cur()]--;log(PN[cur()]+' setzt aus.');next()}}
+function draw(){if(!S.dk.length){S.dk=shuf(S.ds);S.ds=[]}const id=S.dk.pop();S.ds.push(id);const cd=CARDS[id];S.card=cd;const r=cd.f();log('Ereigniskarte „'+cd.n+'“'+(r?': '+r:''))}
+function land(){const p=cur(),i=S.p[p],c=S.c[i];S.ph='end';
+if(i%4==0){draw();return}
+if(c.lk>0){log('Feld gesperrt. Nichts passiert.');return}
+if(p==0){if(!c.h){if(hc()<12){const f=S.first;build(i);log(f?'Haus gebaut. Das erste Haus erhält sofort einen Sicherheitschip.':'Haus gebaut.')}else log('Alle 12 Häuser stehen schon.')}
+else if(c.o){if(c.im)log('Immun: keine Räumung möglich.');else if(S.arA){c.o=0;log('Kurzfristige Räumung: Haus automatisch geräumt.')}else{S.ph='act';S.ctx='ev';log('Besetztes Haus: würfle für die Räumung.')}}
+else if(!c.s){c.s=1;log('Eigenes Haus: Sicherheitschip gelegt.')}else log('Das Haus ist schon geschützt.')}
+else{if(!c.h)log('Leere Straße. Nichts passiert.');else if(c.o)log('Schon besetzt.');
+else if(c.s){S.ph='act';S.ctx='un';log('Geschütztes Haus: würfle, um den Sicherheitschip zu entfernen.')}
+else if(coms().some(j=>j!=p&&S.p[j]==i)){c.o=1;log('Zwei Kommunisten: Haus sofort besetzt!')}
+else{S.ph='act';S.ctx='oc';log('Ungeschütztes Haus: würfle zum Besetzen.')}}}
+function go(){if(S.over){init();return}
+if(S.ph=='move'){const p=cur();let m,r=null;if(S.ex[p]){m=1;S.ex[p]=0}else{r=d6();S.r=r;m=r;if(S.dbl[p]){m*=2;S.dbl[p]=0}}if(S.bn[p]){m++;S.bn[p]=0}
+S.p[p]=(S.p[p]+m)%16;log(PN[p]+(r?' würfelt '+r:' darf nicht würfeln')+' und zieht '+m+' Felder auf '+nm(S.p[p])+'.');land()}
+else if(S.ph=='act'){const r=d6(),ok=r>=4,c=S.c[S.p[cur()]];S.r=r;const t=S.ctx;
+if(t=='un'){if(ok)c.s=0;log(ok?'Erfolg: Sicherheitschip entfernt.':'Misserfolg: Sicherheitschip bleibt.')}
+if(t=='oc'){if(ok)c.o=1;log(ok?'Erfolg: Haus besetzt!':'Misserfolg: nicht besetzt.')}
+if(t=='ev'){if(ok)c.o=0;log(ok?'Erfolg: Haus geräumt.':'Misserfolg: Besetzung bleibt.')}
+S.ph='end'}
+else next();render()}
+function render(){const p=cur();let h='';
+for(let i=0;i<16;i++){const[r,c]=POS[i],cl=S.c[i],pw=[0,1,2,3].filter(j=>S.p[j]==i).map(j=>`<span class="pw${j?'':' k0'}${j==p&&!S.over?' on':''}">${j?j:'K'}</span>`).join('');
+if(i%4==0)h+=`<div class="t k" style="grid-area:${r}/${c}"><small>EREIGNIS</small><div>${i?'':'START →'}<div class="tk">${pw}</div></div></div>`;
+else{const hs=cl.h?`<svg class="hs${cl.o?' oc':''}" viewBox="0 0 20 20"><path d="M2 10L10 3L18 10V18H2Z"/>${cl.s?'<circle class="rg" cx="10" cy="10.5" r="9.4"/>':''}</svg>`:'';
+h+=`<div class="t ${SD[i>>2]}${cl.lk>0?' lkd':''}" style="grid-area:${r}/${c};--c:${COL[i>>2]}"><div>${NM[i-1-(i>>2)]}</div><div class="tk">${hs}${cl.im?'<b class="im">★</b>':''}${pw}</div></div>`}}
+const cd=S.card;
+h+=`<div class="ct"><b>Kommunopoly</b>${cd?`<div class="cc"><i>${TAG[cd.s]}</i><br><b style="font-size:2.4cqw;text-transform:none">${cd.n}</b><br>${cd.x}</div>`:'<div class="dk"></div>'}<div style="font-size:1.6cqw;font-weight:500">Ereigniskarten · ${S.dk.length} im Stapel</div></div>`;
+$('bd').innerHTML=h;
+const R=Math.min(Math.floor(S.t/6)+1,RL),btn=S.over?'Neues Spiel':S.ph=='move'?'Würfeln & ziehen':S.ph=='act'?'Würfeln für die Aktion':'Zug beenden';
+const win=S.over?`<h2>${oc()>6?'Das Kollektiv gewinnt':'Der Kapitalist gewinnt'}</h2><div class="st">${oc()} von 12 Straßen sind besetzt. Das Kollektiv braucht mehr als 6.</div>`:`<h2>${PN[p]} ist dran</h2><div class="st">Runde ${R} von ${RL} · Häuser ${hc()}/12 · besetzt ${oc()}</div>`;
+const ctl=S.ch?`<div class="st"><b>${S.ch.q}</b></div><div class="opts">${S.ch.o.map((o,k)=>`<button data-k="${k}">${o[0]}</button>`).join('')}</div>`:`<div class="rw"><div id="die">${S.r??'–'}</div><button id="go">${btn}</button></div>`;$('pn').innerHTML=`<div class="ch">${seq.map((j,k)=>`<span class="${j?'':'c0'}${k==S.t%6&&!S.over?' a':''}">${j?j:'K'}</span>`).join('')}</div>${win}${ctl}<div class="rule">1–3 Misserfolg · 4–6 Erfolg</div><ul class="lg">${S.lg.slice(0,6).map(x=>'<li>'+x+'</li>').join('')}</ul><div class="lh">Haus = Quadrat mit Dach · Ring = Sicherheitschip · rotes Haus = besetzt · ★ = immun · schraffiert = gesperrt. Das Kollektiv gewinnt, wenn nach ${RL} Runden mehr als 6 der 12 Straßen besetzt sind.</div>`;
+if(S.ch)document.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>pick(+b.dataset.k));else $('go').onclick=go}
+init();
+</script>
+</body>
+</html>
